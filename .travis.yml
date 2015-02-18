@@ -12,3 +12,5 @@ install:
     - sudo gem install fpm
     - cd flasfka-v0
     - sh pkgbuild.sh
+script:
+    - echo "hello"
