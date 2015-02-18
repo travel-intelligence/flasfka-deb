@@ -1,0 +1,14 @@
+env:
+    - KAFKA_VERSION=0.8.1
+    - KAFKA_VERSION=0.8.1.1
+before_install:
+    - curl https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_2.8.0-${KAFKA_VERSION}.tgz | tar xvz
+    - cd kafka_2.8.0-${KAFKA_VERSION}
+    - bin/zookeeper-server-start.sh config/zookeeper.properties >/dev/null 2>&1 &
+    - bin/kafka-server-start.sh config/server.properties >/dev/null 2>&1 &
+    - cd -
+install:
+    - sudo apt-get install -qq ruby-dev gcc
+    - sudo gem install fpm
+    - cd flasfka-v0
+    - sh pkgbuild.sh
