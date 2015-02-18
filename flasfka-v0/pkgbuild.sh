@@ -52,6 +52,9 @@ build(){
   virtualenv -p python2 build/var/www/${pkgname}/venv
   cd src
   ../build/var/www/${pkgname}/venv/bin/pip install -r requirements.txt
+  # the file flasfka-serve can be used as the wsgi module
+  # uwsgi won't load a file that does not have the .py extension, so we
+  # create wsgi.py
   ln -s flasfka-serve wsgi.py
   cd -
   cp -R src/* build/var/www/${pkgname}
