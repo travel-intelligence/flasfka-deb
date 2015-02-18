@@ -8,9 +8,12 @@ before_install:
     - bin/kafka-server-start.sh config/server.properties >/dev/null 2>&1 &
     - cd -
 install:
-    - sudo apt-get install -qq ruby-dev gcc
+    - sudo apt-get install -qq ruby-dev gcc build-essential
+    - sudo apt-get install -qq rubygems gdebi
+    - sudo apt-get install -qq nginx
     - sudo gem install fpm
     - cd flasfka-v0
     - sh pkgbuild.sh
+    - sudo gdebi --n flasfka-v0*.deb
 script:
     - echo "hello"
