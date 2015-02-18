@@ -16,5 +16,8 @@ install:
     - cd flasfka-v0
     - sh pkgbuild.sh
     - sudo gdebi --n flasfka-v0*.deb
+    - sudo cp nginx.conf /etc/nginx/nginx.conf
+    - sudo service nginx restart
 script:
-    - echo "hello"
+    - seq 1 200 | xargs -I % -n 1 curl -s -X POST --data-binary "test%" http://127.0.0.1/flasfka/v0/my-topic/
+    - curl -s http://127.0.0.1/flasfka/v0/my-topic/
