@@ -9,6 +9,7 @@ before_install:
     - cd -
 install:
     - sudo apt-get install -qq ruby-dev gcc build-essential
+    - sudo apt-get install -qq python-virtualenv
     - sudo apt-get install -qq rubygems gdebi
     - sudo apt-get install -qq nginx
     - sudo gem install fpm
