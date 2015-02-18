@@ -1,6 +1,4 @@
-before_install:
-    - sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu/ trusty main universe"
-    - sudo apt-get update -qq
+language: bash
 env:
     - KAFKA_VERSION=0.8.1
     - KAFKA_VERSION=0.8.1.1
@@ -11,14 +9,18 @@ before_install:
     - bin/kafka-server-start.sh config/server.properties >/dev/null 2>&1 &
     - cd -
 install:
-    - sudo apt-get install -qq ruby-dev gcc build-essential
-    - sudo apt-get install -qq python-virtualenv
-    - sudo apt-get install -qq rubygems gdebi-core
-    - sudo apt-get install -qq nginx
+    - sudo apt-get install -qq gcc
+                               build-essential
+                               python-virtualenv
+                               ruby-dev
+                               rubygems
+                               nginx
+    - sudo apt-get install -qq uwsgi
+                               uwsgi-plugin-python
     - rvmsudo gem install fpm
     - cd flasfka-v0
     - sh pkgbuild.sh
-    - sudo gdebi -n flasfka-v0*.deb
+    - sudo dpkg -i flasfka-v0*.deb
     - sudo cp nginx.conf /etc/nginx/nginx.conf
     - sudo service nginx restart
 script:
