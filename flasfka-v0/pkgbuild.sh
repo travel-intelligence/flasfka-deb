@@ -52,9 +52,11 @@ build(){
   virtualenv -p python2 build/var/www/${pkgname}/venv
   cd src
   ../build/var/www/${pkgname}/venv/bin/pip install -r requirements.txt
+  ln -s flasfka-serve wsgi.py
   cd -
   cp -R src/* build/var/www/${pkgname}
   cp uwsgi.ini build/etc/uwsgi/apps-available/${pkgname}.ini
+  cp flasfka.conf.py build/etc/${pkgname}.conf.py
 }
 
 package(){
