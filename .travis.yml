@@ -10,12 +10,12 @@ before_install:
 install:
     - sudo apt-get install -qq ruby-dev gcc build-essential
     - sudo apt-get install -qq python-virtualenv
-    - sudo apt-get install -qq rubygems gdebi
+    - sudo apt-get install -qq rubygems gdebi-core
     - sudo apt-get install -qq nginx
     - rvmsudo gem install fpm
     - cd flasfka-v0
     - sh pkgbuild.sh
-    - sudo gdebi --n flasfka-v0*.deb
+    - sudo gdebi -n flasfka-v0*.deb
     - sudo cp nginx.conf /etc/nginx/nginx.conf
     - sudo service nginx restart
 script:
