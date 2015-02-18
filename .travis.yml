@@ -12,8 +12,7 @@ install:
     - sudo apt-get install -qq python-virtualenv
     - sudo apt-get install -qq rubygems gdebi
     - sudo apt-get install -qq nginx
-    - sudo gem install bundler
-    - sudo gem install fpm
+    - rvmsudo gem install fpm
     - cd flasfka-v0
     - sh pkgbuild.sh
     - sudo gdebi --n flasfka-v0*.deb
