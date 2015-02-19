@@ -18,6 +18,7 @@ install:
     - rvmsudo gem install fpm
     - cd flasfka-v0
     - sh pkgbuild.sh
+    - sudo apt-get remove -qq libzmq3
     - sudo apt-get install -qq libzmq-dev
     - sudo apt-get install -qq uwsgi
                                uwsgi-plugin-python
