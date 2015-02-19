@@ -15,11 +15,12 @@ install:
                                ruby-dev
                                rubygems
                                nginx
-    - sudo apt-get install -qq uwsgi
-                               uwsgi-plugin-python
     - rvmsudo gem install fpm
     - cd flasfka-v0
     - sh pkgbuild.sh
+    - sudo ap-get remove --qq libzmq3
+    - sudo apt-get install -qq uwsgi
+                               uwsgi-plugin-python
     - sudo dpkg -i flasfka-v0*.deb
     - sudo cp nginx.conf /etc/nginx/nginx.conf
     - sudo service nginx restart
