@@ -32,5 +32,5 @@ install:
     - sudo cp nginx.conf /etc/nginx/nginx.conf
     - sudo service nginx restart
 script:
-    - seq 1 200 | xargs -I % -n 1 curl -s -X POST --data-binary "test%" http://127.0.0.1/flasfka/v0/my-topic/
+    - curl -s -X POST --data-binary '{"messages":["hello world!"]}' http://127.0.0.1/flasfka/v0/my-topic/
     - curl -s http://127.0.0.1/flasfka/v0/my-topic/
