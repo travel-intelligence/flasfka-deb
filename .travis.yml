@@ -18,11 +18,9 @@ install:
     - rvmsudo gem install fpm
     - cd flasfka-v0
     - sh pkgbuild.sh
-    - sudo apt-get remove -qq libzmq3
+    - sudo apt-get install -qq libzmq3-dev
     - sudo apt-get install -qq uwsgi
                                uwsgi-plugin-python
-    - sudo apt-get install -qq libzmq3
-    - sudo /sbin/ldconfig
     - sudo dpkg -i flasfka-v0*.deb
     - sudo cp nginx.conf /etc/nginx/nginx.conf
     - sudo service nginx restart
