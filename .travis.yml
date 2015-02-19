@@ -3,27 +3,32 @@ env:
     - KAFKA_VERSION=0.8.1
     - KAFKA_VERSION=0.8.1.1
 before_install:
+    # This deals with https://github.com/travis-ci/travis-ci/issues/3250
     - sudo apt-get remove -qq libzmq3
-    - sudo rm /etc/apt/sources.list.d/travis_ci_zeromq3-source.list
+    - sudo rm -f /etc/apt/sources.list.d/travis_ci_zeromq3-source.list
     - sudo apt-get update -qq
+    # Install and start kafka and zookeeper
     - curl https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_2.8.0-${KAFKA_VERSION}.tgz | tar xvz
     - cd kafka_2.8.0-${KAFKA_VERSION}
     - bin/zookeeper-server-start.sh config/zookeeper.properties >/dev/null 2>&1 &
     - bin/kafka-server-start.sh config/server.properties >/dev/null 2>&1 &
     - cd -
 install:
+    # Install what is necessary to build (fpm + python)
     - sudo apt-get install -qq gcc
                                build-essential
                                python-virtualenv
                                ruby-dev
                                rubygems
-                               nginx
+                               gdebi-core
     - rvmsudo gem install fpm
+    # Actual build
     - cd flasfka-v0
     - sh pkgbuild.sh
-    - sudo apt-get install -qq uwsgi
-    - sudo apt-get install -qq uwsgi-plugin-python
-    - sudo dpkg -i flasfka-v0*.deb
+    # Install generated package
+    - sudo gdebi -n flasfka-v0*.deb
+    # Install and start an nginx instance with the recommended config
+    - sudo apt-get install -qq nginx
     - sudo cp nginx.conf /etc/nginx/nginx.conf
     - sudo service nginx restart
 script:
