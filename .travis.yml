@@ -3,6 +3,9 @@ env:
     - KAFKA_VERSION=0.8.1
     - KAFKA_VERSION=0.8.1.1
 before_install:
+    - sudo apt-get remove -qq libzmq3
+    - sudo rm /etc/apt/sources.list.d/travis_ci_zeromq3-source.list
+    - sudo apt-get update -qq
     - curl https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_2.8.0-${KAFKA_VERSION}.tgz | tar xvz
     - cd kafka_2.8.0-${KAFKA_VERSION}
     - bin/zookeeper-server-start.sh config/zookeeper.properties >/dev/null 2>&1 &
