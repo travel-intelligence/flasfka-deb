@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# summary of how this script can be called:
+#        * <postinst> `configure' <most-recently-configured-version>
+#        * <old-postinst> `abort-upgrade' <new version>
+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
+#          <new-version>
+#        * <postinst> `abort-remove'
+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
+#          <failed-install-package> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+set -e
+
+case "$1" in
+  configure)
+    ln -sf /etc/uwsgi/apps-available/flasfka-URLVERSION.ini /etc/uwsgi/apps-enabled/flasfka-URLVERSION.ini
+    service uwsgi start flasfka-URLVERSION
+  ;;
+
+  abort-upgrade|abort-remove|abort-deconfigure)
+  ;;
+
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+  ;;
+esac
+
+cat << EOF
+flasfka has been installed as an uwsgi app. It can be served in nginx
+with the following snippet:
+
+        location = /flasfka/URLVERSION { rewrite ^ /flasfka/URLVERSION/; }
+
+        location /flasfka/URLVERSION { try_files \$uri @flasfka-URLVERSION; }
+
+        location @flasfka-URLVERSION {
+            include uwsgi_params;
+            uwsgi_param SCRIPT_NAME /flasfka/URLVERSION;
+            uwsgi_modifier1 30;
+            uwsgi_pass unix:/var/run/uwsgi/app/flasfka-URLVERSION/socket;
+        }
+EOF
+
+exit 0

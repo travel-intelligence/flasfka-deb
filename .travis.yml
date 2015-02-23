@@ -26,8 +26,11 @@ install:
     - cd flasfka-v0
     - sh pkgbuild.sh
     # Install generated package
-    - sudo gdebi -n flasfka-v0*.deb
+    - sudo gdebi -n flasfka-*.deb
     # Install and start an nginx instance with the recommended config
+    - cd ../flasfka-pip
+    - sh pkgbuild.sh
+    - sudo gdebi -n flasfka-*.deb
     - sudo apt-get install -qq nginx
     - sudo cp nginx.conf /etc/nginx/nginx.conf
     - sudo service nginx restart
