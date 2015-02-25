@@ -44,11 +44,11 @@ How to build
 How to use
 ----------
 
-- Build the package, install it
+- build the package, install it
 - copy ``/usr/share/doc/flasfka-*/nginx.conf.sample`` to ``/etc/nginx.conf``,
   restart nginx.
-- POST/GET your messages to/from ``/flasfka/vX`` (where ``X`` is the
-  relevant version)
+- post/get to/from ``/flasfka/vX`` (where ``X`` is the relevant release
+  name)
 
 
 .. |Build Status| image:: https://travis-ci.org/travel-intelligence/flasfka-deb.svg?branch=master
