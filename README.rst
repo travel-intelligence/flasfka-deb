@@ -9,8 +9,7 @@ Features
 --------
 
 The package embeds all the python dependencies in a virtualenv. It also
-sets up uwsgi. An example configuration for nginx is included in the
-package.
+sets up uwsgi. An example configuration for nginx is included.
 
 How to build
 ------------
