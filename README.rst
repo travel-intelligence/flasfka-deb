@@ -3,12 +3,7 @@ flasfka-deb
 
 |Build Status|
 
-Packaging for flasfka (fpm-based)
-
-What
-----
-
-This will create a debian package from the latest pypi release.
+Packaging for flasfka (fpm-based) based on the latest pypi release.
 
 Features
 --------
