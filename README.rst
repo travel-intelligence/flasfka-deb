@@ -15,7 +15,7 @@ Features
 
 The package embeds all the python dependencies in a virtualenv. It also
 sets up uwsgi and suggests an nginx config at install time. An example
-configuration for nginx is attached.
+configuration for nginx is included in the package.
 
 Naming convention
 -----------------
