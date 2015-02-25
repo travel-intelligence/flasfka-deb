@@ -9,8 +9,8 @@ Features
 --------
 
 The package embeds all the python dependencies in a virtualenv. It also
-sets up uwsgi and suggests an nginx config at install time. An example
-configuration for nginx is included in the package.
+sets up uwsgi. An example configuration for nginx is included in the
+package.
 
 How to build
 ------------
@@ -39,7 +39,6 @@ that we can safely replace the packages of a same MAJOR with one another.
 This is for upgrade purpose, such that 2 incompatible versions can be
 installed on the same system, and served at 2 urls, without apt
 complaining.
-
 
 
 .. |Build Status| image:: https://travis-ci.org/travel-intelligence/flasfka-deb.svg?branch=master
