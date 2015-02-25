@@ -1,0 +1,26 @@
+user www-data;
+worker_processes 4;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 768;
+}
+
+http {
+
+    server {
+
+        listen 80;
+
+        location = /flasfka/URLVERSION { rewrite ^ /flasfka/URLVERSION/; }
+
+        location /flasfka/URLVERSION { try_files $uri @flasfka-URLVERSION; }
+
+        location @flasfka-URLVERSION {
+            include uwsgi_params;
+            uwsgi_param SCRIPT_NAME /flasfka/URLVERSION;
+            uwsgi_modifier1 30;
+            uwsgi_pass unix:/var/run/uwsgi/app/flasfka-URLVERSION/socket;
+        }
+    }
+}

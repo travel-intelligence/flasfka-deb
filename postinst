@@ -31,18 +31,7 @@ esac
 
 cat << EOF
 flasfka has been installed as an uwsgi app. It can be served in nginx
-with the following snippet:
-
-        location = /flasfka/URLVERSION { rewrite ^ /flasfka/URLVERSION/; }
-
-        location /flasfka/URLVERSION { try_files \$uri @flasfka-URLVERSION; }
-
-        location @flasfka-URLVERSION {
-            include uwsgi_params;
-            uwsgi_param SCRIPT_NAME /flasfka/URLVERSION;
-            uwsgi_modifier1 30;
-            uwsgi_pass unix:/var/run/uwsgi/app/flasfka-URLVERSION/socket;
-        }
+using snippets from /var/www/flasfka-URLVERSION/nginx.conf.sample
 EOF
 
 exit 0

@@ -28,8 +28,10 @@ build(){
   sed -i "s/URLVERSION/${URLVERSION}/g" postinst
   sed -i "s/URLVERSION/${URLVERSION}/g" prerm
   sed -i "s/URLVERSION/${URLVERSION}/g" uwsgi.ini
+  sed -i "s/URLVERSION/${URLVERSION}/g" nginx.conf.sample
 
   cp uwsgi.ini build/etc/uwsgi/apps-available/${pkgname}-${URLVERSION}.ini
+  cp nginx.conf.sample build/var/www/${pkgname}-${URLVERSION}/nginx.conf.sample
 
   ln -s venv/bin/${pkgname}-serve \
     build/var/www/${pkgname}-${URLVERSION}/wsgi.py
