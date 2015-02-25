@@ -14,10 +14,12 @@ version() {
 }
 
 prepare() {
+  URLVERSION="v$(version | sed 's/\(.\).*$/\1/')"
+
   rm -rf build
   mkdir -p build/var/www
   mkdir -p build/etc/uwsgi/apps-available
-  mkdir -p build/usr/share/doc
+  mkdir -p build/usr/share/doc/${pkgname}-${URLVERSION}
 }
 
 build(){
