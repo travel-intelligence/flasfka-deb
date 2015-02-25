@@ -41,7 +41,15 @@ How to build
 - install python-virtualenv
 - run ``sh pkgbuild.sh``
 
-When in doubt, look at the .travis.yml file
+How to use
+----------
+
+- Build the package, install it
+- copy ``/usr/share/doc/flasfka-*/nginx.conf.sample`` to ``/etc/nginx.conf``,
+  restart nginx.
+- POST/GET your messages to/from ``/flasfka/vX`` (where ``X`` is the
+  relevant version)
+
 
 .. |Build Status| image:: https://travis-ci.org/travel-intelligence/flasfka-deb.svg?branch=master
     :target: https://travis-ci.org/travel-intelligence/flasfka-deb
