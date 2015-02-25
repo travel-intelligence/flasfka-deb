@@ -35,10 +35,13 @@ package (``0.x.y`` generates ``flasfka-v0``, ``1.x.y`` generates
 same MAJOR with one another.
 
 How to build
-============
+------------
 
 - install fpm
+- install python-virtualenv
 - run ``sh pkgbuild.sh``
+
+When in doubt, look at the .travis.yml file
 
 .. |Build Status| image:: https://travis-ci.org/travel-intelligence/flasfka-deb.svg?branch=master
     :target: https://travis-ci.org/travel-intelligence/flasfka-deb
