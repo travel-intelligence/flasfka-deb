@@ -27,7 +27,7 @@ install:
     - sudo gdebi -n flasfka-*.deb
     # Start an nginx instance with the recommended config
     - sudo apt-get install -qq nginx
-    - sudo cp /var/www/flasfka-*/nginx.conf.sample /etc/nginx/nginx.conf
+    - sudo cp /usr/share/doc/flasfka-*/nginx.conf.sample /etc/nginx/nginx.conf
     - sudo service nginx restart
 script:
     - curl -s -X POST --data-binary '{"messages":["hello world!"]}' http://127.0.0.1/flasfka/v1/my-topic/

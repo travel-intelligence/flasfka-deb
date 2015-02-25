@@ -17,6 +17,7 @@ prepare() {
   rm -rf build
   mkdir -p build/var/www
   mkdir -p build/etc/uwsgi/apps-available
+  mkdir -p build/usr/share/doc
 }
 
 build(){
@@ -31,7 +32,7 @@ build(){
   sed -i "s/URLVERSION/${URLVERSION}/g" nginx.conf.sample
 
   cp uwsgi.ini build/etc/uwsgi/apps-available/${pkgname}-${URLVERSION}.ini
-  cp nginx.conf.sample build/var/www/${pkgname}-${URLVERSION}/nginx.conf.sample
+  cp nginx.conf.sample build/usr/share/doc/${pkgname}-${URLVERSION}/nginx.conf.sample
 
   ln -s venv/bin/${pkgname}-serve \
     build/var/www/${pkgname}-${URLVERSION}/wsgi.py

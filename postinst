@@ -29,6 +29,6 @@ case "$1" in
   ;;
 esac
 
-echo "You should look at /var/www/flasfka-URLVERSION/nginx.conf.sample"
+echo "You should look at /usr/share/doc/flasfka-URLVERSION/nginx.conf.sample"
 
 exit 0
