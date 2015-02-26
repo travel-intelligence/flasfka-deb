@@ -21,13 +21,14 @@ How to build
 How to use, once built and installed
 ------------------------------------
 
-- copy ``/usr/share/doc/flasfka-*/nginx.conf.sample`` to ``/etc/nginx.conf``,
-  restart nginx.
+- copy what you need from ``/usr/share/doc/flasfka-*/nginx.conf.sample``
+  to ``/etc/nginx.conf`` and restart nginx.
 - edit ``/etc/flasfka.conf`` to `configure
   <https://github.com/travel-intelligence/flasfka#configuration>`_ how
   flasfka connects to your cluster.
-- post/get to/from ``/flasfka/vX`` (where ``X`` is the major version - see
-  below)
+- start `using <https://github.com/travel-intelligence/flasfka#usage>`_
+  flasfka: it is now being served from ``/flasfka/vX`` (where ``X`` is the
+  major version - see below)
 
 Package naming convention
 -------------------------
