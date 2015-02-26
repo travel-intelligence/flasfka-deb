@@ -23,6 +23,9 @@ How to use, once built and installed
 
 - copy ``/usr/share/doc/flasfka-*/nginx.conf.sample`` to ``/etc/nginx.conf``,
   restart nginx.
+- edit ``/etc/flasfka.conf`` to `configure
+  <https://github.com/travel-intelligence/flasfka#configuration>`_ how
+  flasfka connects to your cluster.
 - post/get to/from ``/flasfka/vX`` (where ``X`` is the major version - see
   below)
 
