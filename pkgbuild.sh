@@ -8,14 +8,13 @@ pkgver=1
 arch=all
 pkgdesc="push/pull on Kafka via http"
 
-version() {
-  curl -s https://pypi.python.org/pypi/${pkgname}/json | \
-    python -c 'import sys, json; sys.stdout.write(max(json.load(sys.stdin)["releases"].keys()))'
-}
+# What is the latest version, according to pypi?
+VERSION=$(curl -s https://pypi.python.org/pypi/${pkgname}/json \
+  | python -c 'import sys, json; sys.stdout.write(max(json.load(sys.stdin)["releases"].keys()))')
+# First digit of the version
+URLVERSION="v$(echo ${VERSION} | sed 's/\(.\).*$/\1/')"
 
 prepare() {
-  URLVERSION="v$(version | sed 's/\(.\).*$/\1/')"
-
   rm -rf build
   mkdir -p build/var/www
   mkdir -p build/etc/uwsgi/apps-available
@@ -23,8 +22,6 @@ prepare() {
 }
 
 build(){
-  URLVERSION="v$(version | sed 's/\(.\).*$/\1/')"
-
   virtualenv -p python2 build/var/www/${pkgname}-${URLVERSION}/venv
   build/var/www/${pkgname}-${URLVERSION}/venv/bin/pip install ${pkgname}
 
@@ -42,8 +39,6 @@ build(){
 
 
 package(){
-  VERSION=$(version)
-  URLVERSION="v$(version | sed 's/\(.\).*$/\1/')"
   fpm -p ${pkgname}-${URLVERSION}_${VERSION}_${pkgver}_${arch}.deb \
     -n ${pkgname}-${URLVERSION} \
     -v ${VERSION} \
