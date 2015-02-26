@@ -28,7 +28,9 @@ How to use, once built and installed
   flasfka connects to your cluster.
 - start `using <https://github.com/travel-intelligence/flasfka#usage>`_
   flasfka: it is now being served from ``/flasfka/vX`` (where ``X`` is the
-  major version - see below)
+  major version - see below). A simple `test
+  <https://github.com/travel-intelligence/flasfka-deb/blob/master/.travis.yml>`_
+  will help seeing if everything is fine.
 
 Package naming convention
 -------------------------
