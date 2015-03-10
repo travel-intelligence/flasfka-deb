@@ -4,7 +4,7 @@ set -u
 set -e
 
 pkgname=flasfka
-pkgver=1
+pkgver=2
 arch=all
 pkgdesc="push/pull on Kafka via http"
 
